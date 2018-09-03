@@ -9,7 +9,6 @@ app = FlaskAPI(__name__)
 def api_root():
     return render_template('index.html')
 
-
 @app.route('/buzzer', methods=["GET"])
 def get_buzzer_state():
     return get_buzzer()
@@ -21,14 +20,12 @@ def enable_buzzer():
 
     return auth_required()
 
-
 @app.route('/buzzer', methods=["DELETE"])
 def disable_buzzer():
     if authenticated():
         return set_buzzer(enable=False)
 
     return auth_required()
-
 
 if __name__ == "__main__":
     try:

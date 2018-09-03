@@ -3,12 +3,11 @@ import settings
 from flask import request, make_response, jsonify
 from RPi import GPIO
 
-syslog.openlog(settings.logging_ident)
 BUZZER_GPIO = settings.gpio['buzzer']
 GPIO.setmode(GPIO.BCM)
+syslog.openlog(settings.logging_ident)
 
 def auth_required():
-
     resp = make_response("Not authenticated")
     resp.status_code = 401
     resp.headers['WWW-Authenticate'] = 'Basic realm="Relays Access"'
@@ -16,7 +15,6 @@ def auth_required():
     return resp
 
 def authenticated():
-
     auth = request.authorization
 
     if not auth:
