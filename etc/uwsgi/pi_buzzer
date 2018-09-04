@@ -1,0 +1,15 @@
+[uwsgi]
+master = True
+
+workers = 1
+threads = 2
+lazy = True
+
+uid = www-data
+gid = www-data
+
+die-on-idle = True
+
+plugins = python
+
+module = wsgi:app
