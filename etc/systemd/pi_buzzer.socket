@@ -1,8 +1,8 @@
 [Unit]
-Description=Socket for uWSGI app %i
+Description=Socket for uWSGI app pi_buzzer
 
 [Socket]
-ListenStream=/var/run/uwsgi/%i.socket
+ListenStream=/var/run/uwsgi/pi_buzzer.socket
 SocketUser=www-data
 SocketGroup=www-data
 SocketMode=0660
