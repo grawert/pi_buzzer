@@ -30,6 +30,6 @@ def disable_buzzer():
 if __name__ == "__main__":
     try:
         app.debug = True
-        app.run(host=settings.rest['listen'], port=settings.rest['port'])
+        app.run(host=settings.listen['address'], port=settings.listen['port'])
     finally:
         finish()

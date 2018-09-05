@@ -6,8 +6,8 @@ auth = {
     'password': 'bar',
 }
 
-rest = {
-    'listen': '0.0.0.0',
+listen = {
+    'address': '0.0.0.0',
     'port': 5021,
 }
 
