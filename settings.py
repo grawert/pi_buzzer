@@ -1,5 +1,5 @@
 logging_enable = True
-logging_ident  = 'PiBuzzer'
+logging_ident  = 'pi_buzzer'
 
 auth = {
     'uid': 'foo',
