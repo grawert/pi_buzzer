@@ -12,5 +12,5 @@ listen = {
 }
 
 gpio = {
-    'buzzer': 14,
+    'buzzer': 4,
 }
