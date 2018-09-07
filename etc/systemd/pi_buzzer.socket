@@ -3,7 +3,7 @@ Description=Socket for uWSGI app pi_buzzer
 
 [Socket]
 ListenStream=/var/run/uwsgi/pi_buzzer.socket
-SocketUser=www-data
+SocketUser=root
 SocketGroup=www-data
 SocketMode=0660
 

@@ -6,8 +6,8 @@ After=syslog.target
 ExecStart=/usr/bin/uwsgi \
         --ini /etc/uwsgi/apps-available/pi_buzzer \
         --socket /var/run/uwsgi/pi_buzzer.socket
-User=www-data
-Group=www-data
+User=root
+Group=root
 Restart=on-failure
 KillSignal=SIGQUIT
 Type=notify

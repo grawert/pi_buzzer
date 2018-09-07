@@ -5,8 +5,9 @@ workers = 1
 threads = 2
 lazy = True
 
-uid = www-data
-gid = www-data
+# run as root to be able to control GPIOs
+uid = root
+gid = root
 
 die-on-idle = True
 
