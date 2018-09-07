@@ -3,9 +3,11 @@ import settings
 from flask import request, make_response, jsonify
 from RPi import GPIO
 
+syslog.openlog(settings.logging_ident)
+
 BUZZER_GPIO = settings.gpio['buzzer']
 GPIO.setmode(GPIO.BCM)
-syslog.openlog(settings.logging_ident)
+GPIO.setup(BUZZER_GPIO, GPIO.OUT)
 
 def auth_required():
     resp = make_response("Not authenticated")
@@ -36,11 +38,11 @@ def get_buzzer():
 
 def set_buzzer(enable=False):
     if enable:
-        log_gpio_action('Set', BUZZER_GPIO, GPIO.LOW)
-        GPIO.output(BUZZER_GPIO, GPIO.LOW)
-    else:
         log_gpio_action('Set', BUZZER_GPIO, GPIO.HIGH)
         GPIO.output(BUZZER_GPIO, GPIO.HIGH)
+    else:
+        log_gpio_action('Set', BUZZER_GPIO, GPIO.LOW)
+        GPIO.output(BUZZER_GPIO, GPIO.LOW)
 
     return jsonify(buzzer=GPIO.input(BUZZER_GPIO))
 
