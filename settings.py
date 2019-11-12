@@ -8,7 +8,7 @@ auth = {
 
 listen = {
     'address': '0.0.0.0',
-    'port': 5021,
+    'port': 5000,
 }
 
 gpio = {
