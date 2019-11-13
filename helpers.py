@@ -1,9 +1,10 @@
-import syslog
+import sys
+import logging
 import settings
 from flask import request, make_response, jsonify
 from RPi import GPIO
 
-syslog.openlog(settings.logging_ident)
+logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
 
 BUZZER_GPIO = settings.gpio['buzzer']
 GPIO.setmode(GPIO.BCM)
@@ -23,13 +24,15 @@ def authenticated():
         return False
 
     if settings.auth['uid'] == auth.username and settings.auth['password'] == auth.password:
+        logging.debug('user %s successfully authenticated' % auth.username)
         return True
 
+    logging.debug('user %s authentication failed' % auth.username)
     return False
 
 def log_gpio_action(action, gpio, state):
     if settings.logging_enable:
-        syslog.syslog(syslog.LOG_INFO, ("%s GPIO %s: %s" % (action, gpio, state)))
+        logging.info("%s GPIO %s: %s" % (action, gpio, state))
 
 def get_buzzer():
     state = GPIO.input(BUZZER_GPIO)
